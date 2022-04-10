@@ -118,18 +118,22 @@ zeroBtn.onclick = (e) => {
 }
 
 addBtn.onclick = (e) => {
+  calcPara.textContent = '';
   calcPara.textContent += '+';
 }
 
 substractBtn.onclick = (e) => {
+  calcPara.textContent = '';
   calcPara.textContent += '-';
 }
 
 divideBtn.onclick = (e) => {
+  calcPara.textContent = '';
   calcPara.textContent += '/';
 }
 
 multiplyBtn.onclick = (e) => {
+  calcPara.textContent = '';
   calcPara.textContent += '*';
 }
 
