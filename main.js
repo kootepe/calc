@@ -1,4 +1,4 @@
-let mainContainer = document.querySelector('#container');
+let mainContainer = document.querySelector('#operators');
 
 const oneBtn = document.createElement('button');
 oneBtn.textContent = "1";
@@ -39,6 +39,9 @@ mainContainer.appendChild(nineBtn);
 const zeroBtn = document.createElement('button');
 zeroBtn.textContent = "0";
 mainContainer.appendChild(zeroBtn);
+
+const br = document.createElement('br');
+mainContainer.appendChild(br);
 
 const addBtn = document.createElement('button');
 addBtn .textContent = "+";
