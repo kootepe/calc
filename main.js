@@ -3,6 +3,7 @@ let calcContainer = document.querySelector('#operators');
 
 const calcPara = document.createElement('p');
 calcPara.textContent = '9659';
+calcPara.style.height = '1em';
 calcContainer.appendChild(calcPara);
 
 // buttons start 
@@ -58,9 +59,9 @@ const substractBtn = document.createElement('button');
 substractBtn.textContent = "-";
 calcContainer.appendChild(substractBtn);
 
-const diviveBtn = document.createElement('button');
-diviveBtn.textContent = "/";
-calcContainer.appendChild(diviveBtn);
+const divideBtn = document.createElement('button');
+divideBtn .textContent = "/";
+calcContainer.appendChild(divideBtn );
 
 const multiplyBtn = document.createElement('button');
 multiplyBtn.textContent = "*";
@@ -75,4 +76,69 @@ clearBtn.textContent = "clear";
 calcContainer.appendChild(clearBtn);
 
 //buttons end
+
+oneBtn.onclick = (e) => {
+  calcPara.textContent += '1';
+}
+
+twoBtn.onclick = (e) => {
+  calcPara.textContent += '2';
+}
+
+threeBtn.onclick = (e) => {
+  calcPara.textContent += '3';
+}
+
+fourBtn.onclick = (e) => {
+  calcPara.textContent += '4';
+}
+
+fiveBtn.onclick = (e) => {
+  calcPara.textContent += '5';
+}
+
+sixBtn.onclick = (e) => {
+  calcPara.textContent += '6';
+}
+
+sevenBtn.onclick = (e) => {
+  calcPara.textContent += '7';
+}
+
+eightBtn.onclick = (e) => {
+  calcPara.textContent += '8';
+}
+
+nineBtn.onclick = (e) => {
+  calcPara.textContent += '9';
+}
+
+zeroBtn.onclick = (e) => {
+  calcPara.textContent += '0';
+}
+
+addBtn.onclick = (e) => {
+  calcPara.textContent += '+';
+}
+
+substractBtn.onclick = (e) => {
+  calcPara.textContent += '-';
+}
+
+divideBtn.onclick = (e) => {
+  calcPara.textContent += '/';
+}
+
+multiplyBtn.onclick = (e) => {
+  calcPara.textContent += '*';
+}
+
+equalsBtn.onclick = (e) => {
+  calcPara.textContent += '';
+}
+
+clearBtn.onclick = (e) => {
+  calcPara.textContent = '';
+}
+
 
