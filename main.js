@@ -122,6 +122,7 @@ function toDisplay(e) {
   let opBtnsArr = Array.from(opBtns);
   if (displayContent && opBtnsArr.includes(e.currentTarget)) {
     aboveDisplay.textContent = displayContent; 
+    display.textContent = "";
   }
   display.textContent += btnTxt;
 }
