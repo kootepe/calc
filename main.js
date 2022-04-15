@@ -1,10 +1,17 @@
 let mainContainer = document.querySelector('#container');
 let calcContainer = document.querySelector('#operators');
 
-const calcPara = document.createElement('p');
-calcPara.textContent = '9659';
-calcPara.style.height = '1em';
-calcContainer.appendChild(calcPara);
+const display = document.createElement('p');
+display.textContent = '9659';
+display.style.height = '1em';
+calcContainer.appendChild(display);
+
+let calculation = [];
+
+function arrPush() {
+  calculation.push(display.textContent);
+}
+
 
 // buttons start 
 
@@ -26,7 +33,7 @@ calcContainer.appendChild(fourBtn);
 
 const fiveBtn = document.createElement('button');
 fiveBtn.textContent = "5";
-calcContainer.appendChild(fiveBtn );
+calcContainer.appendChild(fiveBtn);
 
 const sixBtn = document.createElement('button');
 sixBtn.textContent = "6";
@@ -78,71 +85,83 @@ calcContainer.appendChild(clearBtn);
 //buttons end
 
 oneBtn.onclick = (e) => {
-  calcPara.textContent += '1';
+  display.textContent += '1';
+  calculation.push('1');
 }
 
 twoBtn.onclick = (e) => {
-  calcPara.textContent += '2';
+  display.textContent += '2';
+  calculation.push('2');
 }
 
 threeBtn.onclick = (e) => {
-  calcPara.textContent += '3';
+  display.textContent += '3';
+  calculation.push('3');
 }
 
 fourBtn.onclick = (e) => {
-  calcPara.textContent += '4';
+  display.textContent += '4';
+  calculation.push('4');
 }
 
 fiveBtn.onclick = (e) => {
-  calcPara.textContent += '5';
+  display.textContent += '5';
+  calculation.push('5');
 }
 
 sixBtn.onclick = (e) => {
-  calcPara.textContent += '6';
+  display.textContent += '6';
+  calculation.push('6');
 }
-
 sevenBtn.onclick = (e) => {
-  calcPara.textContent += '7';
+  display.textContent += '7';
+  calculation.push('7');
 }
 
 eightBtn.onclick = (e) => {
-  calcPara.textContent += '8';
+  display.textContent += '8';
+  calculation.push('8');
 }
 
 nineBtn.onclick = (e) => {
-  calcPara.textContent += '9';
+  display.textContent += '9';
+  calculation.push('9');
 }
 
 zeroBtn.onclick = (e) => {
-  calcPara.textContent += '0';
+  display.textContent += '0';
+  calculation.push('0');
 }
 
 addBtn.onclick = (e) => {
-  calcPara.textContent = '';
-  calcPara.textContent += '+';
+  display.textContent = '';
+  display.textContent += '+ ';
+  calculation.push('+');
 }
 
 substractBtn.onclick = (e) => {
-  calcPara.textContent = '';
-  calcPara.textContent += '-';
+  display.textContent = '';
+  display.textContent += '- ';
+  calculation.push('-');
 }
 
 divideBtn.onclick = (e) => {
-  calcPara.textContent = '';
-  calcPara.textContent += '/';
+  display.textContent = '';
+  display.textContent += '/ ';
+  calculation.push('/');
 }
 
 multiplyBtn.onclick = (e) => {
-  calcPara.textContent = '';
-  calcPara.textContent += '*';
+  display.textContent = '';
+  display.textContent += '* ';
+  calculation.push('*');
 }
 
 equalsBtn.onclick = (e) => {
-  calcPara.textContent += '';
+  display.textContent += '';
 }
 
 clearBtn.onclick = (e) => {
-  calcPara.textContent = '';
+  display.textContent = '';
 }
-
 
