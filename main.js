@@ -2,13 +2,14 @@ let mainContainer = document.querySelector('#container');
 let calcContainer = document.querySelector('#operators');
 
 const display = document.createElement('p');
-display.textContent = '9659';
+const aboveDisplay= document.createElement('p');
+display.textContent = '';
 display.style.height = '1em';
-calcContainer.appendChild(display);
+aboveDisplay.style.height = '1em';
+calcContainer.append(aboveDisplay);
+calcContainer.append(display);
 
 let calculation = [];
-
-
 
 // buttons start 
 
@@ -101,6 +102,10 @@ equalsBtn.onclick = (e) => {
 
 clearBtn.onclick = (e) => {
   display.textContent = '';
+  aboveDisplay.textContent = '';
+  display.style.height = '1em';
+  calcContainer.prepend(display);
+  calcContainer.prepend(aboveDisplay)
   calculation = [];
 }
 
@@ -113,6 +118,11 @@ numBtns.forEach(function(e) {
 function toDisplay(e) {
   let currentBtn = e.currentTarget; 
   let btnTxt = currentBtn.textContent;
+  let displayContent = display.textContent;
+  let opBtnsArr = Array.from(opBtns);
+  if (displayContent && opBtnsArr.includes(e.currentTarget)) {
+    aboveDisplay.textContent = displayContent; 
+  }
   display.textContent += btnTxt;
 }
 
@@ -121,7 +131,6 @@ let opBtns = document.querySelectorAll('.opBtn');
 opBtns.forEach(function(e) {
   e.addEventListener('click', (e) => {
     arrPush();
-    display.textContent = '';
     toDisplay(e);
     arrPush();
   });
