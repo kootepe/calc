@@ -67,22 +67,22 @@ const br = document.createElement('br');
 calcContainer.appendChild(br);
 
 const addBtn = document.createElement('button');
-addBtn.classList.add('opBtn');
+addBtn.classList.add('opsBtn');
 addBtn.textContent = "+";
 calcContainer.appendChild(addBtn );
 
 const substractBtn = document.createElement('button');
-substractBtn.classList.add('opBtn');
+substractBtn.classList.add('opsBtn');
 substractBtn.textContent = "-";
 calcContainer.appendChild(substractBtn);
 
 const divideBtn = document.createElement('button');
-divideBtn.classList.add('opBtn');
+divideBtn.classList.add('opsBtn');
 divideBtn.textContent = "/";
 calcContainer.appendChild(divideBtn );
 
 const multiplyBtn = document.createElement('button');
-multiplyBtn.classList.add('opBtn');
+multiplyBtn.classList.add('opsBtn');
 multiplyBtn.textContent = "*";
 calcContainer.appendChild(multiplyBtn);
 
@@ -110,34 +110,57 @@ clearBtn.onclick = (e) => {
 }
 
 let numBtns = document.querySelectorAll('.numBtn');
+let opsBtns = document.querySelectorAll('.opsBtn');
 
-numBtns.forEach(function(e) {
-  e.addEventListener('click', toDisplay);
+opsBtns.forEach(function(e) {
+  e.addEventListener('click', (e) => {
+  toDisplay(e);
+  });
 });
+
+let operatorArray = ['*', '/', '+', '-']
+let allowedOnce = '+-';
+let notAllowed = '*/';
 
 function toDisplay(e) {
   let currentBtn = e.currentTarget; 
   let btnTxt = currentBtn.textContent;
-  let displayContent = display.textContent;
-  let opBtnsArr = Array.from(opBtns);
-  if (displayContent && opBtnsArr.includes(e.currentTarget)) {
-    aboveDisplay.textContent = displayContent; 
-    display.textContent = "";
-  }
-  display.textContent += btnTxt;
+  displayContent = display.textContent;
+  if (displayContent && allowedOnce.includes(btnTxt)) {
+   display.textContent = btnTxt;
+  } else if (!displayContent && notAllowed.includes(btnTxt)) {
+    display.textContent = display.textContent;
+  };
+  display.textContent += display.textContent;
+};
+
+function sum(a, b) {
+  return a + b;
 }
 
-let opBtns = document.querySelectorAll('.opBtn');
+function substract(a,b) {
+  return a - b;
+}
 
-opBtns.forEach(function(e) {
+function multiply(a,b) {
+  return a * b;
+}
+ 
+function divide(a, b) {
+  return a / b;
+}
+
+equalsBtn.addEventListener('click', (e) => {
+})
+
+numBtns.forEach(function(e) {
   e.addEventListener('click', (e) => {
-    arrPush();
     toDisplay(e);
-    arrPush();
   });
 });
 
-function arrPush() {
-  let constants = display.textContent;
-  calculation.push(constants);
-};
+
+// function arrPush() {
+//   let constants = display.textContent;
+//   calculation.push(constants);
+// };
