@@ -147,6 +147,7 @@ function toDisplay(e) {
   btnTxt = currentBtn.textContent;
 
   if (btnTxt === '=') {
+     valueTwo = display.textContent;
      selectFunc(currentOperator, valueOne, valueTwo);
   } else if (operatorArray.includes(btnTxt)) {
     aboveDisplay.textContent = display.textContent;
