@@ -145,6 +145,7 @@ let tulos = 0;
 function toDisplay(e) {
   const currentBtn = e.currentTarget; 
   btnTxt = currentBtn.textContent;
+  displayed = ``;
 
   if (btnTxt === '=') {
     selectFunc(currentOperator, valueOne, valueTwo);
@@ -155,11 +156,11 @@ function toDisplay(e) {
     display.textContent = btnTxt;
     currentOperator = btnTxt;
   } else {
-  display.textContent += btnTxt;
-  valueOne = aboveDisplay.textContent;
-  valueTwo = display.textContent;
-  console.log(`valueOne is ${valueOne} and valueTwo is ${valueTwo}`);
-  console.log(btnTxt === '=');
+    display.textContent += btnTxt;
+    valueOne = aboveDisplay.textContent;
+    valueTwo = display.textContent;
+    console.log(`valueOne is ${valueOne} and valueTwo is ${valueTwo}`);
+    console.log(btnTxt === '=');
 };
 };
 
@@ -179,12 +180,9 @@ function divide(a, b) {
 }
 
 function selectFunc(currentOperator, valueOne, valueTwo) {
-  let rmOperator = valueTwo;
-  if (currentOperator !== '-') {
-  rmOperator = valueTwo.slice(1);
-  };
-  const first = Number(valueOne);
-  const second = Number(rmOperator); 
+  removeOperator(valueOne, valueTwo);
+  const first = Number(fixOne);
+  const second = Number(fixTwo); 
   switch (currentOperator) {
     case '+':
       summa(first, second);
@@ -200,7 +198,18 @@ function selectFunc(currentOperator, valueOne, valueTwo) {
       break;
   };
 };
- 
+
+let fixOne = '';
+let fixTwo = '';
+
+function removeOperator(valueOne, valueTwo) {
+  fixOne = valueOne.replace('*', "");
+  fixOne = fixOne.replace('/', '');
+  fixTwo =  valueTwo.replace('*', "");
+  fixTwo = fixTwo.replace('/', '');
+    console.log(`valueOne is ${fixOne} and valueTwo is ${fixTwo}`);
+  return fixOne, fixTwo;
+}
 
 // function arrPush() {
 //   let constants = display.textContent;
