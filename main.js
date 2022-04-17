@@ -147,39 +147,60 @@ function toDisplay(e) {
   btnTxt = currentBtn.textContent;
 
   if (btnTxt === '=') {
-     selectFunc(currentOperator, valueOne, valueTwo);
+    selectFunc(currentOperator, valueOne, valueTwo);
+    display.textContent = tulos;
   } else if (operatorArray.includes(btnTxt)) {
     aboveDisplay.textContent = display.textContent;
     valueOne = aboveDisplay.textContent;
     display.textContent = btnTxt;
     currentOperator = btnTxt;
   } else {
-  display.textContent = btnTxt;
+  display.textContent += btnTxt;
   valueOne = aboveDisplay.textContent;
   valueTwo = display.textContent;
-  console.log(btnTxt);
+  console.log(`valueOne is ${valueOne} and valueTwo is ${valueTwo}`);
   console.log(btnTxt === '=');
 };
 };
 
-function selectFunc(currentOperator, valueOne, valueTwo) {
-  const first = Number(valueOne);
-  const second = Number(valueTwo); 
-  if (currentOperator === '+') {
-  tulos = first + second;
-  return console.log(tulos);
-} else if (currentOperator === '-') {
-  tulos = valueOne - valueTwo;
-  return console.log(tulos);
-} else if (currentOperator === '*') {
-  tulos = valueOne * valueTwo;
-  return console.log(tulos);
-} else {
-  tulos = valueOne / valueTwo;
-  return console.log(tulos);
-};
-};
+function summa(a, b) {
+  tulos = a + b;
+  return tulos;
+}
 
+ function multiply(a, b) {
+  tulos = a * b;
+  return tulos;
+}
+
+function divide(a, b) {
+  tulos = a / b;
+  return tulos;
+}
+
+function selectFunc(currentOperator, valueOne, valueTwo) {
+  let rmOperator = valueTwo;
+  if (currentOperator !== '-') {
+  rmOperator = valueTwo.slice(1);
+  };
+  const first = Number(valueOne);
+  const second = Number(rmOperator); 
+  switch (currentOperator) {
+    case '+':
+      summa(first, second);
+      break;
+    case '-':
+      summa(first, second);
+      break;
+    case '*':
+      multiply(first, second);
+      break;
+    case '/':
+      divide(first, second);
+      break;
+  };
+};
+ 
 
 // function arrPush() {
 //   let constants = display.textContent;
