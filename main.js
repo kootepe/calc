@@ -202,6 +202,7 @@ function selectFunc(currentOperator, valueOne, valueTwo) {
 let fixOne = '';
 let fixTwo = '';
 
+
 function removeOperator(valueOne, valueTwo) {
   fixOne = valueOne.replace('*', "");
   fixOne = fixOne.replace('/', '');
