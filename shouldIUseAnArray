@@ -1,0 +1,15 @@
+Calculator taking inputs as strings vs arrays
+
+Arrays: 
+Only works if there's just two values which would probably work for
+this simple calculator. After summing two values their sum could
+overwrite the first value in the array. And pressing an operator would
+just select the function that the array items would be an input for. 
+
+Does it make sense to always only have one value on the screen?
+
+Should num1 and num2 default two 0? So if the first input is an 
+operator, there would still always be answer.
+
+Strings: 
+By the time I got here I was pretty decided upon arrays. 

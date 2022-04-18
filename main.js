@@ -136,11 +136,13 @@ equals.forEach(function(e) {
 const operatorArray = ['*', '/', '+', '-']
 const allowedOnce = '+-';
 const notAllowed = '*/';
-let valueOne = 0;
-let valueTwo = 0;
+let valueOne = 1;
+let valueTwo = 1;
 let btnTxt = 0;
 let currentOperator = '';
 let tulos = 0;
+let opBtnArray = Array.from(opsBtns);
+let numBtnArray = Array.from(numBtns);
 
 function toDisplay(e) {
   const currentBtn = e.currentTarget; 
@@ -149,7 +151,12 @@ function toDisplay(e) {
 
   if (btnTxt === '=') {
     selectFunc(currentOperator, valueOne, valueTwo);
+    removeOperator(valueOne, valueTwo);
+    aboveDisplay.textContent = `${valueOne} ${currentOperator} ${fixTwo}`;
     display.textContent = tulos;
+  } else if (operatorArray.includes(btnTxt) && operatorArray.includes(display.textContent)) {
+    display.textContent = btnTxt;
+    currentOperator = btnTxt;
   } else if (operatorArray.includes(btnTxt)) {
     aboveDisplay.textContent = display.textContent;
     valueOne = aboveDisplay.textContent;
