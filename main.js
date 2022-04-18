@@ -176,6 +176,11 @@ function summa(a, b) {
   return tulos;
 }
 
+function substract (a, b) {
+  tulos = a - b
+  return tulos;
+}
+
  function multiply(a, b) {
   tulos = a * b;
   return tulos;
@@ -195,7 +200,7 @@ function selectFunc(currentOperator, valueOne, valueTwo) {
       summa(first, second);
       break;
     case '-':
-      summa(first, second);
+      substract(first, second);
       break;
     case '*':
       multiply(first, second);
@@ -211,11 +216,8 @@ let fixTwo = '';
 
 
 function removeOperator(valueOne, valueTwo) {
-  fixOne = valueOne.replace('*', "");
-  fixOne = fixOne.replace('/', '');
-  fixTwo =  valueTwo.replace('*', "");
-  fixTwo = fixTwo.replace('/', '');
-    console.log(`valueOne is ${fixOne} and valueTwo is ${fixTwo}`);
+  fixOne = valueOne.replace(([+-*/]);
+  fixTwo = valueOne.replace(([+-*/]);
   return fixOne, fixTwo;
 }
 
