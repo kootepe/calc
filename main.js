@@ -2,7 +2,7 @@ let mainContainer = document.querySelector('#container');
 let calcContainer = document.querySelector('#operators');
 
 const display = document.createElement('p');
-const aboveDisplay= document.createElement('p');
+const aboveDisplay = document.createElement('p');
 display.textContent = '';
 display.style.height = '1em';
 aboveDisplay.style.height = '1em';
@@ -95,6 +95,8 @@ const clearBtn = document.createElement('button');
 clearBtn.textContent = "clear";
 calcContainer.appendChild(clearBtn);
 
+window.addEventListener('keydown', handleKeyboardInput) 
+
 //buttons end
 
 equalsBtn.onclick = (e) => {
@@ -122,7 +124,7 @@ opsBtns.forEach(function(e) {
 
 numBtns.forEach(function(e) {
   e.addEventListener('click', (e) => {
-    toDisplay(e);
+    appendNum(e);
   });
 });
 
@@ -132,44 +134,52 @@ equals.forEach(function(e) {
   });
 });
 
-
-const operatorArray = ['*', '/', '+', '-']
-const allowedOnce = '+-';
-const notAllowed = '*/';
-let valueOne = 1;
-let valueTwo = 1;
-let btnTxt = 0;
+let firstDigit = '';
+let secondDigit = '';
 let currentOperator = '';
-let tulos = 0;
-let opBtnArray = Array.from(opsBtns);
-let numBtnArray = Array.from(numBtns);
+let upScreen = `${firstDigit} ${currentOperator} ${secondDigit}`;
+let opBtnArr = []; 
+let numBtnArr = [];
+let equalsArr = ["="]; 
 
-function toDisplay(e) {
+function getText(nodelist) {
+  nodeArr = [];
+  for (let i = 0; i < nodelist.length; i++) {
+    nodeArr.push(nodelist[i].textContent);
+  };
+  return nodeArr; 
+};
+
+getText(numBtns);
+numBtnArr = nodeArr;
+
+getText(opsBtns);
+opBtnArr = nodeArr;
+
+function appendNumKey(e) {
+  firstDigit += e;
+  aboveDisplay.textContent = `${firstDigit}`;
+};
+
+function appendNum(e) {
   const currentBtn = e.currentTarget; 
   btnTxt = currentBtn.textContent;
-  displayed = ``;
+  aboveDisplay.textContent += btnTxt;
+}
 
-  if (btnTxt === '=') {
-    selectFunc(currentOperator, valueOne, valueTwo);
-    removeOperator(valueOne, valueTwo);
-    aboveDisplay.textContent = `${valueOne} ${currentOperator} ${fixTwo}`;
-    display.textContent = tulos;
-  } else if (operatorArray.includes(btnTxt) && operatorArray.includes(display.textContent)) {
-    display.textContent = btnTxt;
-    currentOperator = btnTxt;
-  } else if (operatorArray.includes(btnTxt)) {
-    aboveDisplay.textContent = display.textContent;
-    valueOne = aboveDisplay.textContent;
-    display.textContent = btnTxt;
-    currentOperator = btnTxt;
-  } else {
-    display.textContent += btnTxt;
-    valueOne = aboveDisplay.textContent;
-    valueTwo = display.textContent;
-    console.log(`valueOne is ${valueOne} and valueTwo is ${valueTwo}`);
-    console.log(btnTxt === '=');
-};
-};
+function setOperator(e) {
+  currentOperator = e;
+  aboveDisplay.textContent = `${firstDigit} ${currentOperator}`;
+}
+
+function handleKeyboardInput(e) {
+  if (numBtnArr.includes(e.key)) appendNumKey(e.key);
+  if (e.key === '.') appendPoint()
+  if (e.key === '=' || e.key === 'Enter') evaluate()
+  if (e.key === 'Backspace') deleteNumber()
+  if (e.key === 'Escape') clear()
+  if (opBtnArr.includes(e.key)) setOperator(e.key);  
+}
 
 function summa(a, b) {
   tulos = a + b;
@@ -191,33 +201,28 @@ function divide(a, b) {
   return tulos;
 }
 
-function selectFunc(currentOperator, valueOne, valueTwo) {
-  removeOperator(valueOne, valueTwo);
-  const first = Number(fixOne);
-  const second = Number(fixTwo); 
+function selectFunc(currentOperator, firstDigit, secondDigit) {
   switch (currentOperator) {
     case '+':
-      summa(first, second);
+      summa(firstDigit, secondDigit);
       break;
     case '-':
-      substract(first, second);
+      substract(firstDigit, secondDigit);
       break;
     case '*':
-      multiply(first, second);
+      multiply(firstDigit, secondDigit);
       break;
     case '/':
-      divide(first, second);
+      divide(firstDigit, secondDigit);
       break;
   };
 };
 
-let fixOne = '';
-let fixTwo = '';
 
-
-function removeOperator(valueOne, valueTwo) {
-  fixOne = valueOne.replace(([+-*/]);
-  fixTwo = valueOne.replace(([+-*/]);
+function removeOperator(FirstDigit, secondDigit) {
+  fixOne = firstDigit.replace(/[*-/+]/, '');
+  fixTwo = secondDigit.replace(/[*-/+]/, '');
+  console.log(`first fixed value is ${fixOne}, second is ${fixTwo}`);
   return fixOne, fixTwo;
 }
 
